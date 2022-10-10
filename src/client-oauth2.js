@@ -641,6 +641,11 @@ CodeFlow.prototype.getToken = function (uri, opts) {
   } else {
     body.client_id = options.clientId
   }
+  
+  if (options.includeClientSecretInBody) {
+    body.client_id = options.clientId
+    body.client_secret = options.clientSecret
+  }
 
   return this.client._request(requestOptions({
     url: options.accessTokenUri,
